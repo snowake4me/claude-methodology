@@ -2,14 +2,15 @@
 name: retro
 description: >-
   Close a completed unit of work the consistent way: append the user-facing line
-  to CHANGELOG, move the TASK file to done/ with an Outcome block, and push any
-  steering-worthy learning back into the project's CLAUDE.md / memory. The
-  retrospective bookend to /frame. Invoke when a task is shipped or about to ship.
+  to CHANGELOG, move the TASK file to done/ with an Outcome block, push any
+  steering-worthy learning back into the project's CLAUDE.md / memory, and broadcast
+  a significant milestone to cross-client memory (Open Brain). The retrospective
+  bookend to /frame. Invoke when a task is shipped or about to ship.
 ---
 
 # /retro — close the loop
 
-Run when a unit of work is done. Three moves, in order. Do NOT `git commit` —
+Run when a unit of work is done. Four moves, in order. Do NOT `git commit` —
 stage and tee up the command for the user (see global CLAUDE.md git rules).
 
 ## 1. Record what shipped → CHANGELOG
@@ -45,6 +46,26 @@ preference — push it to the right home:
   (`~/code/ai/claude-methodology`), so every project inherits it.
 
 Don't manufacture learnings. If the work was routine, steps 1–2 are the whole retro.
+
+## 4. Broadcast the milestone → Open Brain (cross-client memory)
+
+If this was a *significant* unit of work — a shipped feature, an architecture or
+naming decision, a project-state shift — capture a standalone summary to **Open
+Brain** (`capture_thought`), the user's cross-client brain. CHANGELOG is repo-local;
+Open Brain is what lets a *different* Claude client (Desktop, web, Design) recall this
+later — e.g. asking Claude Design to update a diagram with the feature you just
+shipped. Don't wait to be asked; this is the cross-client half of "record what shipped."
+
+- Write a clear, **standalone narrative paragraph** that makes sense to any AI later
+  (what shipped, how it works at altitude, what's still open) — not a terse log line.
+- **Correct stale prior thoughts** when facts changed: add an explicit "this CORRECTS
+  the earlier thought that said …" note rather than silently contradicting it.
+- **Plain ASCII prose only.** Open Brain posts through a WAF that blocks code-looking
+  content — no backticks/code blocks, no `≥`/`→`/non-ASCII, no parenthesized query or
+  regex syntax. Spell things out ("PG and E", "greater-or-equal", commands sans backticks).
+- If Open Brain isn't connected in this client, note it and skip — never block the retro.
+
+Routine fixes don't need this; like the rest, don't manufacture a milestone.
 
 ## What this skill is NOT
 
