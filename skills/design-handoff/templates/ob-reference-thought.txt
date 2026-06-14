@@ -1,0 +1,51 @@
+DESIGN-CODE-PROTOCOL  (reserved tag: [DESIGN-CODE-PROTOCOL])
+
+This is the one canonical, project-agnostic reference for how Claude Design and
+Claude Code collaborate. If you are Claude Design, search this tag first thing each
+session: it is your standing instruction set, since you have no local steering file.
+There must be exactly ONE thought with this tag. Do not create another.
+
+This text is plain ASCII on purpose. Open Brain sits behind a Cloudflare WAF that
+blocks backticks, code fences, and many special characters. Keep all protocol
+thoughts as plain prose. Write paths in plain words, for example: see
+design/HANDOFF.md in the repo.
+
+THE ONE CORE IDEA: split SIGNAL from PAYLOAD.
+  SIGNAL  = Open Brain thoughts. Small, cross-client, polled, must be acknowledged.
+            They say only "a handoff exists, here is its type and a pointer".
+  PAYLOAD = the git repo. Large, versioned, durable. It holds the detailed
+            HANDOFF.md build spec and, later, the built result for grading.
+Never put the detailed spec or code into an Open Brain thought. The thought points
+at the payload; the repo holds it.
+
+TWO RESERVED TAGS:
+  [DESIGN-CODE-PROTOCOL] = this reference. How we work. One thought, ever.
+  [SLUG-HANDOFF]         = per-project runtime traffic. The actual handoff signals
+                           for one project, where SLUG is that project's slug, for
+                           example SWEAT-HANDOFF. One stream per project.
+
+FOUR PER-PROJECT PARAMETERS (the only things that vary):
+  slug             - becomes the handoff tag SLUG-HANDOFF
+  repo             - where the payload lives
+  HANDOFF.md path  - the versioned build spec inside the repo
+  design-system ref- what Design grades fidelity against
+
+THE BIDIRECTIONAL LOOP:
+  1. Design authors the spec. Design writes or updates HANDOFF.md in the repo, then
+     posts a SLUG-HANDOFF thought: sender design, recipient code, type task, with a
+     pointer to the HANDOFF.md path or commit. No spec text in the thought.
+  2. Code confirms receipt and proposes a build order. Code polls SLUG-HANDOFF,
+     reads HANDOFF.md, then posts: sender code, recipient design, type ack, with its
+     proposed build order. No build starts before this acknowledgement.
+  3. Code builds. The built result lands back in the repo so Design can read it.
+  4. Design inspects and grades. Design re-reads the result against the design-system
+     ref, grades fidelity, then posts the next SLUG-HANDOFF thought: type accept, or
+     type task with revisions. Go back to step 2.
+
+CONFIRM-RECEIPT IS MANDATORY at every change of direction. A signal with no
+acknowledgement is not a handoff yet. Always poll for, and post, the ack.
+
+To start a new project: confirm this reference thought exists, then for the new
+project set the four parameters, point Claude Design at the repo, and tell it to
+search DESIGN-CODE-PROTOCOL first and then the project's SLUG-HANDOFF stream. No
+part of the protocol should ever be re-derived.

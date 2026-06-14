@@ -27,6 +27,7 @@ link_skill() {
 echo "Linking skills:"
 link_skill frame
 link_skill retro
+link_skill design-handoff
 
 echo "Refreshing managed methodology block in $GLOBAL:"
 mkdir -p "$CLAUDE_HOME"
