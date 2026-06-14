@@ -32,3 +32,11 @@ No standalone DONE file — "what shipped" is the CHANGELOG; "what we learned" i
 the Outcome block + steering docs.
 
 Full templates and rituals live in the `/frame` and `/retro` skills.
+
+## Writing voice — never use the section sign (§)
+
+Never emit "§" in anything you author — prose, specs, tasks, headings, comments,
+commit messages. It's a glaring AI-tell and a pain to type. Cross-reference in
+plain words instead: "see the Lifecycle section", "section 3.2", "under Artifact
+trio" — never the section sign followed by a number. Leave the symbol alone only
+when it already exists in source you're quoting or editing.
