@@ -9,7 +9,7 @@ automatically. No copying into projects, no per-project drift.
 
 | Path | Role |
 |------|------|
-| `CLAUDE.md` | The standing rules (artifact trio + lifecycle). Installed as a *managed block* in `~/.claude/CLAUDE.md` — the passive layer that applies even when no skill is invoked. |
+| `CLAUDE.md` | The standing rules (artifact trio + lifecycle + the `dev`→`main` gitflow and `catchup` aliases). Installed as a *managed block* in `~/.claude/CLAUDE.md` — the passive layer that applies even when no skill is invoked. |
 | `skills/frame/` | `/frame` — turn a fuzzy intent into an approved SPEC or TASK before any code. Carries the canonical templates. |
 | `skills/retro/` | `/retro` — close a unit of work: CHANGELOG line, move the task to `done/`, push learnings into steering docs. |
 | `skills/design-handoff/` | `/design-handoff` — run a Claude Design ↔ Claude Code collaboration over the cross-surface handoff protocol (Open Brain = signal, repo = payload). Carries the canonical OB reference-thought + per-project bootstrap templates. |
