@@ -45,3 +45,10 @@ CLAUDE.md block, backs up anything it replaces).
 
 Edit files **here**, in the repo. The symlinks make changes live in every
 project instantly. Change the convention once; every project inherits the fix.
+
+**This repo is self-hosting, so its own gitflow is the exception.** The skills
+*are* runtime values (symlinked into `~/.claude/skills/`), and the methodology
+`CLAUDE.md` goes live the moment you re-run `install.sh` — editing here *is* the
+deploy. So the `dev`→PR→`main`→`catchup` gitflow the methodology documents for
+*other* repos does **not** apply to this one: stay on `main`, no PR dance. Git
+here is for durable history and fresh-machine clone, not for going live.
